@@ -16,7 +16,7 @@ RUN apt -y install $DEP_PACKAGES \
     && cd / \
     && git clone https://github.com/mapbox/tippecanoe.git -b master  \
     && cd tippecanoe \
-    && make -j`nproc` \
+    && make  \
     && make install \
     && cd $DATA_DIR
 
