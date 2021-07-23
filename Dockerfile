@@ -2,13 +2,12 @@ FROM ubuntu:latest
 
 ENV BUILD_PACKAGES cmake wget git ca-certificates build-essential software-properties-common
 ENV DEP_PACKAGES libsqlite3-dev zlib1g-dev 
-ENV DATA_DIR data_tiles 
-ENV TZ=Europe/Berlin
+ENV DATA_DIR "./data_tiles 
+ENV TZ Europe/Berlin
 
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
 # Create  data directory 
-RUN mkdir -p $DATA_DIR
 RUN apt -qq update && apt -qq --yes upgrade && apt install -y $BUILD_PACKAGES --no-install-recommends
 
 # Tippecanoe
@@ -18,6 +17,7 @@ RUN apt -y install $DEP_PACKAGES \
     && cd tippecanoe \
     && make  \
     && make install \
+    && mkdir -p $DATA_DIR \
     && cd $DATA_DIR
 
 # Tippecanoe now requires features from the 2011 C++ standard. 
