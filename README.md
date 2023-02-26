@@ -16,7 +16,7 @@ This [Dockerfile](Dockerfile) installs TippeCanoe in a docker container with ent
 ### Build
 
 ```shell
-docker build -t eslider1/docker-tippecanoe 
+docker build -t eslider1/docker-tippecanoe .
 ```
 
 ### Usage
